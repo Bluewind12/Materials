@@ -1,0 +1,50 @@
+version: "3"
+services:
+  nginx:
+    image: nginx:1.18
+    container_name: material-nginx
+    ports:
+      - 10080:80
+    volumes:
+      - ./:/material/
+      - ./docker/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+    links:
+      - app
+
+  app:
+    container_name: material-app
+    build: ./docker/app
+    volumes:
+    - ./:/material/
+    links:
+      - db
+
+  composer:
+    container_name: material-composer
+    build: ./docker/composer
+    volumes:
+      - ./:/material/
+    working_dir: /material/
+
+  node:
+    image: node:lts
+    container_name: material-node
+    volumes:
+      - ./:/material/
+    working_dir: /material/
+    entrypoint: [ "npm" ]
+    command: [ "help" ]
+
+  db:
+    image: mysql
+    container_name: material-db
+    environment:
+      POSTGRES_USER: 'mysql'
+      POSTGRES_PASSWORD: 'password'
+      POSTGRES_DB: 'material-app'
+    volumes:
+      - material-db:/var/lib/material
+
+volumes:
+  material-db:
+    driver: local
