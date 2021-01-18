@@ -39,9 +39,11 @@ services:
     image: mysql
     container_name: material-db
     environment:
-      POSTGRES_USER: 'mysql'
-      POSTGRES_PASSWORD: 'password'
-      POSTGRES_DB: 'material-app'
+      MYSQL_USER: 'mysql'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_DB: 'material-app'
+      MYSQL_DATABASE: 'material'
+      MYSQL_ROOT_PASSWORD: 'password'
     volumes:
       - material-db:/var/lib/material
 
