@@ -44,6 +44,8 @@ services:
       MYSQL_DB: 'material-app'
       MYSQL_DATABASE: 'material'
       MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - 3306:3306
     volumes:
       - material-db:/var/lib/material
 
