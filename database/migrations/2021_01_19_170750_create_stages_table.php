@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGameNamesTable extends Migration
+class CreateStagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateGameNamesTable extends Migration
      */
     public function up()
     {
-        Schema::create('game_names', function (Blueprint $table) {
-            $table->bigIncrements('id')->comment("ID");
-            $table->string('name')->comment("ゲーム名");
-            $table->integer('refresh_time_second')->comment("体力回復(s)");
+        Schema::create('stages', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->integer('game_id')->comment("ゲームID");
+            $table->string('name')->comment("ステージ名");
+            $table->integer('stamina')->comment("消費スタミナ");
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateGameNamesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('game_names');
+        Schema::dropIfExists('stages');
     }
 }
