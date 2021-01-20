@@ -15,8 +15,11 @@ class CreateMaterialNamesTable extends Migration
     {
         Schema::create('material_names', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->comment("素材名");
+            $table->unsignedBigInteger('game_id')->comment("ゲームID")->unique();
+            $table->string('name')->comment("素材名")->unique();
             $table->timestamps();
+
+            $table->foreign('game_id')->references('id')->on('game_names');
         });
     }
 

@@ -16,9 +16,11 @@ class CreateGameNamesTable extends Migration
         Schema::create('game_names', function (Blueprint $table) {
             $table->bigIncrements('id')->comment("ID");
             $table->string('name')->comment("ゲーム名");
+            $table->string('comment')->nullable()->comment("概要");
             $table->integer('refresh_time_second')->comment("体力回復(s)");
             $table->timestamps();
         });
+
     }
 
     /**

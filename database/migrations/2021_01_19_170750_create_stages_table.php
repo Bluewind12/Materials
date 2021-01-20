@@ -15,10 +15,12 @@ class CreateStagesTable extends Migration
     {
         Schema::create('stages', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('game_id')->comment("ゲームID");
+            $table->unsignedBigInteger('game_id')->comment("ゲームID")->unique();
             $table->string('name')->comment("ステージ名");
             $table->integer('stamina')->comment("消費スタミナ");
             $table->timestamps();
+
+            $table->foreign('game_id')->references('id')->on('game_names');
         });
     }
 
