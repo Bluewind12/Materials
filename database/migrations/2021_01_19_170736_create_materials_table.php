@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMaterialNamesTable extends Migration
+class CreateMaterialsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateMaterialNamesTable extends Migration
      */
     public function up()
     {
-        Schema::create('material_names', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('game_id')->comment("ゲームID")->unique();
+        Schema::create('materials', function (Blueprint $table) {
+            $table->bigIncrements('id')->comment("素材ID");
             $table->string('name')->comment("素材名")->unique();
-            $table->timestamps();
+            $table->string('comment')->comment("コメント");
 
-            $table->foreign('game_id')->references('id')->on('game_names');
+            $table->timestamps();
         });
     }
 
@@ -30,6 +29,6 @@ class CreateMaterialNamesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('material_names');
+        Schema::dropIfExists('materials');
     }
 }
