@@ -18,3 +18,11 @@ Route::get('/', function () {
 Route::get('/test', function () {
     return view('test');
 });
+
+Route::get('/list/materials', function () {
+    return view('list/material_list');
+})->name('list.materials');
+
+Route::get('/list/stages', function () {
+    return view('list/stage_list');
+})->name('list.stages');
