@@ -3,7 +3,7 @@
 @section('title','ステージ一覧')
 
 @section('content')
-    <h2>素材一覧</h2>
+    <h2>ステージ一覧</h2>
     {{--  検索  --}}
     <div class="form-group">
         {{Form::open(['class'=>'row align-items-center'])}}
