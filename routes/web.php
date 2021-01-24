@@ -26,3 +26,9 @@ Route::get('/list/materials', function () {
 Route::get('/list/stages', function () {
     return view('list/stage_list');
 })->name('list.stages');
+
+Route::get('/add/materials', function () {
+    return view('add/material_add');
+})->name('add.materials');
+
+
