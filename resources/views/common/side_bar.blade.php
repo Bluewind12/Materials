@@ -6,7 +6,7 @@
     <a href="{{route('list.materials')}}" class="text-reset">素材</a>
 
     <div class="h4 px-2 mt-4 border-white border-bottom">@fa('pen')　登録</div>
-    <a href="#" class="text-reset">ステージ登録</a>
+    <a href="{{route('add.stages')}}" class="text-reset">ステージ登録</a>
     <a href="{{route('add.materials')}}" class="text-reset">素材登録</a>
 
     <div class="h4 px-2 mt-4 border-white border-bottom">@fa('calculator')　計算</div>

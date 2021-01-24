@@ -16,6 +16,7 @@ class CreateStagesTable extends Migration
         Schema::create('stages', function (Blueprint $table) {
             $table->bigIncrements('id')->comment("ステージID");
             $table->string('name')->comment("ステージ名");
+            $table->string('comment')->comment("コメント");
             $table->integer('stamina')->comment("消費スタミナ");
 
             $table->timestamps();
